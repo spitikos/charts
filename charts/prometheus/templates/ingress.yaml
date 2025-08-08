@@ -11,6 +11,6 @@ spec:
     - match: Host(`{{ .Values.ingress.host }}`)
       kind: Rule
       services:
-        - name: {{ .Release.Name }}-kube-prometheus-prometheus
+        - name: prometheus-operated
           port: 9090
 {{- end }}

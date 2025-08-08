@@ -23,7 +23,12 @@ traefik:
     nodePorts:
       web: 30080
 
-# Values for our custom templates in this chart
+  # Tell Traefik to watch for IngressRoutes in all namespaces.
+  providers:
+    kubernetesCRD:
+      allowCrossNamespace: true
+      namespaces: [] # An empty list means all namespaces
+
 ingress:
   enabled: true
   host: traefik.spitikos.dev
