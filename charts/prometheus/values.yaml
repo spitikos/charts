@@ -39,7 +39,8 @@ prometheus:
     hosts:
       - prometheus.spitikos.dev
     path: /
-    pathType: Prefix
+    pathType: ImplementationSpecific
+
   prometheusSpec:
     resources:
       requests:

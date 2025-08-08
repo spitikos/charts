@@ -28,6 +28,10 @@ traefik:
     kubernetesCRD:
       allowCrossNamespace: true
       namespaces: [] # An empty list means all namespaces
+    # Also tell Traefik to watch for standard Kubernetes Ingress objects.
+    kubernetesIngress:
+      publishedService:
+        enabled: true
 
 ingress:
   enabled: true
