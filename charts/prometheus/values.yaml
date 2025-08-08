@@ -33,6 +33,13 @@ nodeExporter:
 
 prometheus:
   enabled: true
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hosts:
+      - prometheus.spitikos.dev
+    path: /
+    pathType: Prefix
   prometheusSpec:
     resources:
       requests:
@@ -50,7 +57,3 @@ prometheus:
     serviceMonitorSelector: {}
 
     podMonitorSelector: {}
-
-ingress:
-  enabled: true
-  host: prometheus.spitikos.dev
