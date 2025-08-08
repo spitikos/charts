@@ -1,6 +1,4 @@
 kubernetes-dashboard:
-  ingress:
-    enabled: false
   service:
     externalPort: 443
 
