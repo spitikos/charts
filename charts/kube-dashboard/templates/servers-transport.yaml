@@ -4,6 +4,8 @@ kind: ServersTransport
 metadata:
   name: {{ include "common.fullname" . }}-skip-verify
   namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "common.labels" . | nindent 4 }}
 spec:
   insecureSkipVerify: true
 {{- end }}

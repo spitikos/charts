@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: {{ include "common.fullname" . }}-ingress
   namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "common.labels" . | nindent 4 }}
 spec:
   entryPoints:
     - web
@@ -11,6 +13,6 @@ spec:
     - match: Host(`{{ .Values.ingress.host }}`)
       kind: Rule
       services:
-        - name: prometheus-operated
+        - name: {{ .Release.Name }}-operated
           port: 9090
 {{- end }}
