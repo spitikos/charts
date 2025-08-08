@@ -13,5 +13,5 @@ service:
 
 ingress:
   enabled: true
-  host: pi.taehoonlee.dev
+  host: spitikos.dev
   path: /

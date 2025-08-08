@@ -4,7 +4,7 @@ kubernetes-dashboard:
 
 ingress:
   enabled: true
-  host: kube-pi.taehoonlee.dev
+  host: kube.spitikos.dev
   path: /
 
 serviceAccount:

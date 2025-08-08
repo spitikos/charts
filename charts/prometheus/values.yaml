@@ -50,3 +50,7 @@ prometheus:
     serviceMonitorSelector: {}
 
     podMonitorSelector: {}
+
+ingress:
+  enabled: true
+  host: prometheus.spitikos.dev

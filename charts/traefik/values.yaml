@@ -26,4 +26,4 @@ traefik:
 # Values for our custom templates in this chart
 ingress:
   enabled: true
-  host: traefik-pi.taehoonlee.dev
+  host: traefik.spitikos.dev
