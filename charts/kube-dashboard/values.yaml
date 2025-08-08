@@ -1,0 +1,12 @@
+kubernetes-dashboard:
+  service:
+    externalPort: 443
+
+ingress:
+  enabled: true
+  host: kube-pi.taehoonlee.dev
+  path: /
+
+serviceAccount:
+  create: false
+  name: admin-user
