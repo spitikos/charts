@@ -35,10 +35,6 @@ kube-prometheus-stack:
   prometheus:
     enabled: true
     prometheusSpec:
-      web:
-        corsOrigin:
-          - "https://spitikos.dev"
-
       resources:
         requests:
           cpu: 300m
