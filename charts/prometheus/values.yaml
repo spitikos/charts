@@ -1,59 +1,60 @@
-grafana:
-  enabled: false
+kube-prometheus-stack:
+  grafana:
+    enabled: false
 
-alertmanager:
-  enabled: false
+  alertmanager:
+    enabled: false
 
-prometheusOperator:
-  enabled: true
-  resources:
-    requests:
-      cpu: 100m
-      memory: 128Mi
-    limits:
-      cpu: 200m
-      memory: 256Mi
-
-nodeExporter:
-  enabled: true
-  tolerations:
-    - key: "node-role.kubernetes.io/control-plane"
-      operator: "Exists"
-      effect: "NoSchedule"
-    - key: "node-role.kubernetes.io/master"
-      operator: "Exists"
-      effect: "NoSchedule"
-  resources:
-    requests:
-      cpu: 100m
-      memory: 64Mi
-    limits:
-      cpu: 200m
-      memory: 128Mi
-
-prometheus:
-  enabled: true
-  prometheusSpec:
-    web:
-      corsOrigin:
-        - "https://spitikos.dev"
-
+  prometheusOperator:
+    enabled: true
     resources:
       requests:
-        cpu: 300m
-        memory: 512Mi
+        cpu: 100m
+        memory: 128Mi
       limits:
-        cpu: 750m
-        memory: 1Gi
+        cpu: 200m
+        memory: 256Mi
 
-    scrapeInterval: 2s
+  nodeExporter:
+    enabled: true
+    tolerations:
+      - key: "node-role.kubernetes.io/control-plane"
+        operator: "Exists"
+        effect: "NoSchedule"
+      - key: "node-role.kubernetes.io/master"
+        operator: "Exists"
+        effect: "NoSchedule"
+    resources:
+      requests:
+        cpu: 100m
+        memory: 64Mi
+      limits:
+        cpu: 200m
+        memory: 128Mi
 
-    storageSpec:
-      emptyDir: {}
+  prometheus:
+    enabled: true
+    prometheusSpec:
+      web:
+        corsOrigin:
+          - "https://spitikos.dev"
 
-    serviceMonitorSelector: {}
+      resources:
+        requests:
+          cpu: 300m
+          memory: 512Mi
+        limits:
+          cpu: 750m
+          memory: 1Gi
 
-    podMonitorSelector: {}
+      scrapeInterval: 2s
+
+      storageSpec:
+        emptyDir: {}
+
+      serviceMonitorSelector: {}
+
+      podMonitorSelector: {}
 
 ingress:
   enabled: true
