@@ -46,7 +46,7 @@ prometheus:
         cpu: 750m
         memory: 1Gi
 
-    scrapeInterval: 5s
+    scrapeInterval: 2s
 
     storageSpec:
       emptyDir: {}
