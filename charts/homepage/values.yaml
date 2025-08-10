@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: ghcr.io/spitikos/homepage
   pullPolicy: Always
-  tag: fb8ba6e609b11dfea5a39acb672da2786d777f59
+  tag: 42ad96f60d940921930f6f88fa5c74e89f069a84
 
 service:
   type: ClusterIP
