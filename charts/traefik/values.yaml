@@ -2,23 +2,21 @@ traefik:
   rbac:
     enabled: true
 
-  traefik:
-    # Rename the internal 'traefik' entrypoint to 'dashboard' to avoid a name collision.
-    entryPoints:
-      web:
-        address: ":80"
-      # grpc:
-      #   address: ":50051"
-      dashboard:
-        address: ":8080"
-      websecure:
-        address: null
+  # Rename the internal 'traefik' entrypoint to 'dashboard' to avoid a name collision.
+  entryPoints:
+    web:
+      address: ":80"
+    # grpc:
+    #   address: ":50051"
+    dashboard:
+      address: ":8080"
+    websecure:
+      address: null
 
-    # Enable the API and explicitly tell it to use our newly named 'dashboard' entrypoint.
-    api:
-      insecure: true
-      dashboard: true
-      entryPoint: "dashboard"
+  api:
+    insecure: true
+    dashboard: true
+    entryPoint: "dashboard"
 
   # Configure the service for NodePort access by cloudflared.
   service:
