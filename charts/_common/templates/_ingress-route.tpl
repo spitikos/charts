@@ -19,6 +19,9 @@ spec:
       services:
         - name: {{ include "common.fullname" . }}
           port: {{ .Values.service.port }}
+          {{- if .Values.ingress.scheme }}
+          scheme: {{ .Values.ingress.scheme }}
+          {{- end }}
       middlewares:
         - name: {{ include "common.fullname" . }}-middleware
           namespace: {{ .Release.Namespace }}
