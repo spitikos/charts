@@ -6,9 +6,9 @@ version: 0.1.0
 appVersion: 1.0.0
 icon: "https://raw.githubusercontent.com/spitikos/spitikos/main/assets/icon.svg"
 annotations:
-  charts.helm.sh/display-name: "API: Prometheus Proxy"
+  charts.helm.sh/display-name: "API"
 
 dependencies:
   - name: common
     version: "0.1.0"
-    repository: "file://../../_common"
+    repository: "file://../_common"
