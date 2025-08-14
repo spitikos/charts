@@ -4,7 +4,7 @@ image:
   pullPolicy: Always
   tag: 796ce9ffaf89f02c0d8abf2e42567acef3c3b455
 command:
-  - /bin/prometheus-proxy
+  - /prometheus-proxy
 service:
   type: ClusterIP
   port: 50051
