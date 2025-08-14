@@ -6,6 +6,8 @@ traefik:
   entryPoints:
     web:
       address: ":80"
+    grpc:
+      address: ":50051"
     dashboard:
       address: ":8080"
     websecure:
@@ -22,6 +24,7 @@ traefik:
     type: NodePort
     nodePorts:
       web: 30080
+      grpc: 30051
 
   # Tell Traefik to watch for IngressRoutes in all namespaces.
   providers:

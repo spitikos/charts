@@ -13,6 +13,7 @@ ingress:
   host: api.spitikos.dev
   path: /
   scheme: h2c
+  entryPoint: grpc
 config:
   mountDir: /config
   filename: config.yaml

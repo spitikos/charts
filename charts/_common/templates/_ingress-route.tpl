@@ -12,7 +12,7 @@ metadata:
     {{- include "common.labels" . | nindent 4 }}
 spec:
   entryPoints:
-    - web
+    - {{ .Values.ingress.entryPoint | default "web" }}
   routes:
     - match: Host(`{{ .Values.ingress.host }}`) && PathPrefix(`{{ .Values.ingress.path }}`)
       kind: Rule
