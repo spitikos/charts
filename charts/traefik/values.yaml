@@ -1,40 +1,44 @@
+# Values passed to the Traefik subchart
 traefik:
+  # Enable RBAC for Traefik to read cluster resources
   rbac:
     enabled: true
 
-  # Rename the internal 'traefik' entrypoint to 'dashboard' to avoid a name collision.
-  entryPoints:
+  # Configure the entrypoints for Traefik
+  ports:
+    # The main web entrypoint for HTTP traffic
     web:
-      address: ":80"
+      port: 80
+      # We use NodePort to expose it to cloudflared
+      expose: true
+      exposedPort: 30080
+
+    # The entrypoint for gRPC traffic
     grpc:
-      address: ":50051"
-    dashboard:
-      address: ":8080"
-    websecure:
-      address: null
+      port: 50051
+      expose: true
+      exposedPort: 30051
+      # gRPC requires the protocol to be TCP
+      protocol: TCP
 
-  api:
-    insecure: true
-    dashboard: true
-    entryPoint: "dashboard"
+    # The entrypoint for the Traefik dashboard
+    traefik:
+      port: 8080
 
-  # Configure the service for NodePort access by cloudflared.
-  service:
-    type: NodePort
-    nodePorts:
-      web: 30080
-      grpc: 30051
-
-  # Tell Traefik to watch for IngressRoutes in all namespaces.
+  # Enable the Kubernetes CRD provider
   providers:
     kubernetesCRD:
       allowCrossNamespace: true
-      namespaces: [] # An empty list means all namespaces
-    # Also tell Traefik to watch for standard Kubernetes Ingress objects.
     kubernetesIngress:
       publishedService:
         enabled: true
 
+  # Enable the dashboard and API
+  api:
+    dashboard: true
+    insecure: true
+
+# Values for the wrapper chart's own templates (e.g., the dashboard IngressRoute)
 ingress:
   enabled: true
   host: traefik.spitikos.dev
