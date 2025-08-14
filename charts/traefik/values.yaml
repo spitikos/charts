@@ -6,8 +6,8 @@ traefik:
   entryPoints:
     web:
       address: ":80"
-    grpc:
-      address: ":50051"
+    # grpc:
+    #   address: ":50051"
     dashboard:
       address: ":8080"
     websecure:
