@@ -1,4 +1,5 @@
-{{- if .Values.config }}
+{{- define "common.configmap" -}}
+{{- if .Values.config.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -7,6 +8,7 @@ metadata:
   labels:
     {{- include "common.labels" . | nindent 4 }}
 data:
-  prometheus_proxy.yaml: |
+  {{ .Values.config.filename }}: |
     {{- toYaml .Values.config.data | nindent 4 }}
 {{- end }}
+{{- end -}}

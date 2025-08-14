@@ -34,12 +34,16 @@ spec:
             - name: {{ .Values.service.portName | default "http" }}
               containerPort: {{ .Values.service.containerPort }}
               protocol: TCP
-          {{- with .Values.extraVolumeMounts }}
+          {{- if .Values.config.enabled }}
           volumeMounts:
-            {{- toYaml . | nindent 12 }}
+            - name: config
+              mountPath: {{ include "common.config.mountPath" . }}
+              subPath: {{ .Values.config.filename }}
           {{- end }}
-      {{- with .Values.extraVolumes }}
+      {{- if .Values.config.enabled }}
       volumes:
-        {{- toYaml . | nindent 8 }}
+        - name: config
+          configMap:
+            name: {{ include "common.fullname" . }}-config
       {{- end }}
 {{- end -}}

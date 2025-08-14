@@ -6,4 +6,4 @@
 ---
 {{- include "common.middleware" . | nindent 0 }}
 ---
-{{- include "api-prometheus-proxy.configmap" . | nindent 0 }}
+{{- include "common.configmap" . | nindent 0 }}
