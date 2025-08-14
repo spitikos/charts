@@ -13,9 +13,12 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.portName | default "http" }}
+      targetPort: {{ .Values.service.containerPort }}
       protocol: TCP
-      name: http
+      name: {{ .Values.service.portName | default "http" }}
+      {{- if .Values.service.appProtocol }}
+      appProtocol: {{ .Values.service.appProtocol }}
+      {{- end }}
   selector:
     {{- include "common.selectorLabels" . | nindent 4 }}
 {{- end -}}

@@ -7,12 +7,12 @@ service:
   type: ClusterIP
   port: 50051
   containerPort: 50051
-  portName: http-grpc
+  portName: grpc
+  appProtocol: h2c
 ingress:
   enabled: true
   host: api.spitikos.dev
   path: /
-  scheme: h2c
   entryPoint: grpc
 config:
   mountDir: /config
