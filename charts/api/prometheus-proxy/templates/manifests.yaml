@@ -5,3 +5,5 @@
 {{- include "common.ingress-route" . | nindent 0 }}
 ---
 {{- include "common.middleware" . | nindent 0 }}
+---
+{{- include "api-prometheus-proxy.configmap" . | nindent 0 }}
