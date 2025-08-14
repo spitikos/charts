@@ -34,8 +34,7 @@ spec:
           {{- if .Values.config }}
           volumeMounts:
             - name: config
-              mountPath: {{ include "common.config.mountPath" . }}
-              subPath: {{ .Values.config.filename }}
+              mountPath: {{ .Values.config.mountDir }}
           {{- end }}
       {{- if .Values.config }}
       volumes:

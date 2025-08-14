@@ -23,11 +23,4 @@ app.kubernetes.io/name: {{ include "common.fullname" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
-{{/*
-Create the full mount path for a config file.
-*/}}
-{{- define "common.config.mountPath" -}}
-{{- if .Values.config -}}
-{{- printf "%s/%s" (trimSuffix "/" .Values.config.mountDir) .Values.config.filename -}}
-{{- end -}}
-{{- end -}}
+
