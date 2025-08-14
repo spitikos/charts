@@ -4,4 +4,6 @@
 ---
 {{- include "common.ingress-route" . | nindent 0 }}
 ---
+{{- include "common.middleware" . | nindent 0 }}
+---
 {{- include "common.configmap" . | nindent 0 }}
