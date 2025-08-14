@@ -40,6 +40,6 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: {{ include "common.fullname" . }}-config
+            name: {{ include "common.fullname" . }}-configmap
       {{- end }}
 {{- end -}}
