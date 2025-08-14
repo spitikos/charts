@@ -13,7 +13,6 @@ ingress:
   host: api.spitikos.dev
   path: /
 config:
-  enabled: true
   mountDir: /config
   filename: config.yaml
   data:

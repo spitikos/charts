@@ -31,13 +31,13 @@ spec:
             - name: {{ .Values.service.portName | default "http" }}
               containerPort: {{ .Values.service.containerPort }}
               protocol: TCP
-          {{- if .Values.config.enabled }}
+          {{- if .Values.config }}
           volumeMounts:
             - name: config
               mountPath: {{ include "common.config.mountPath" . }}
               subPath: {{ .Values.config.filename }}
           {{- end }}
-      {{- if .Values.config.enabled }}
+      {{- if .Values.config }}
       volumes:
         - name: config
           configMap:
