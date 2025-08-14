@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: ghcr.io/spitikos/api
   pullPolicy: Always
-  tag: e372f4475cc3b50965a97694d5460ed89c6dc46e
+  tag: 41a3e789f21fa037117e0e8044da138596ab0c52
 command:
   - /server
 service:
