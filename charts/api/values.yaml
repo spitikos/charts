@@ -3,8 +3,6 @@ image:
   repository: ghcr.io/spitikos/api
   pullPolicy: Always
   tag: 41a3e789f21fa037117e0e8044da138596ab0c52
-command:
-  - /server
 service:
   type: ClusterIP
   port: 50051

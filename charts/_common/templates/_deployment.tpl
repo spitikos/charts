@@ -27,9 +27,6 @@ spec:
         - name: {{ include "common.fullname" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- with .Values.command }}
-          command: {{- toYaml . | nindent 12 }}
-          {{- end }}
           ports:
             - name: {{ .Values.service.portName | default "http" }}
               containerPort: {{ .Values.service.containerPort }}
