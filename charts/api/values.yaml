@@ -2,7 +2,9 @@ replicaCount: 1
 image:
   repository: ghcr.io/spitikos/api
   pullPolicy: Always
-  tag: 796ce9ffaf89f02c0d8abf2e42567acef3c3b455
+  tag: e372f4475cc3b50965a97694d5460ed89c6dc46e
+command:
+  - /server
 service:
   type: ClusterIP
   port: 50051
@@ -12,7 +14,6 @@ ingress:
   enabled: true
   host: api.spitikos.dev
   path: /
-
 config:
   enabled: true
   mountDir: /config
