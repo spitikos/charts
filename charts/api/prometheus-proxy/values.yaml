@@ -1,0 +1,19 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/spitikos/api
+  pullPolicy: Always
+  tag: latest
+
+command: ["/usr/local/bin/prometheus-proxy"]
+
+service:
+  type: ClusterIP
+  port: 50051
+  containerPort: 50051
+  portName: http-grpc
+
+ingress:
+  enabled: true
+  host: api.spitikos.dev
+  path: /prometheus-proxy
