@@ -12,7 +12,7 @@ service:
 ingress:
   enabled: true
   host: api.spitikos.dev
-  entryPoint: grpc
+  entryPoint: web
   scheme: h2c
 config:
   mountDir: /config
