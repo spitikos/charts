@@ -70,6 +70,7 @@ spec:
           port: 50051
           scheme: h2c
           passHostHeader: true
+
 ---
 apiVersion: v1
 kind: ConfigMap
