@@ -9,14 +9,16 @@ traefik:
     # The main web entrypoint for HTTP traffic
     web:
       port: 80
-      # We use NodePort to expose it to cloudflared
-      expose: true
+      # # We use NodePort to expose it to cloudflared
+      # expose:
+      #   enabled: true
       exposedPort: 30080
 
     # The entrypoint for gRPC traffic
     grpc:
       port: 50051
-      expose: true
+      # expose:
+      #   enabled: true
       exposedPort: 30051
       # gRPC requires the protocol to be TCP
       protocol: TCP
