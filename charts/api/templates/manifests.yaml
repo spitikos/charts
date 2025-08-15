@@ -51,7 +51,8 @@ spec:
       name: grpc
       appProtocol: grpc
   selector:
-    app: api
+    app.kubernetes.io/name: api
+    app.kubernetes.io/instance: api
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
