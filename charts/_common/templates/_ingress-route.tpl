@@ -14,7 +14,7 @@ spec:
   entryPoints:
     - {{ .Values.ingress.entryPoint | default "web" }}
   routes:
-    - match: Host(`{{ .Values.ingress.host }}`) && PathPrefix(`{{ .Values.ingress.path }}`)
+    - match: Host(`{{ .Values.ingress.host }}`)
       kind: Rule
       services:
         - name: {{ include "common.fullname" . }}

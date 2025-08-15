@@ -12,7 +12,6 @@ service:
 ingress:
   enabled: true
   host: api.spitikos.dev
-  path: /
   entryPoint: web
   scheme: h2c
 config:
