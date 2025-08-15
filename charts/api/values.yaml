@@ -1,26 +1,26 @@
-replicaCount: 5
-image:
-  repository: ghcr.io/spitikos/api
-  pullPolicy: Always
-  tag: 11f5aabacc37fb3fcb9de71d4c3845f755e8f259
-service:
-  type: ClusterIP
-  port: 50051
-  containerPort: 50051
-  portName: grpc
-  appProtocol: grpc
-ingress:
-  enabled: true
-  host: api.spitikos.dev
-  entryPoint: websecure
-  scheme: h2c
-config:
-  mountDir: /config
-  filename: config.yaml
-  data:
-    server:
-      port: 50051
-    prometheus_proxy:
-      url: https://prometheus.spitikos.dev
-      query_range_step_seconds: 15
-      stream_interval_seconds: 1
+# replicaCount: 5
+# image:
+#   repository: ghcr.io/spitikos/api
+#   pullPolicy: Always
+#   tag: 11f5aabacc37fb3fcb9de71d4c3845f755e8f259
+# service:
+#   type: ClusterIP
+#   port: 50051
+#   containerPort: 50051
+#   portName: grpc
+#   appProtocol: grpc
+# ingress:
+#   enabled: true
+#   host: api.spitikos.dev
+#   entryPoint: websecure
+#   scheme: h2c
+# config:
+#   mountDir: /config
+#   filename: config.yaml
+#   data:
+#     server:
+#       port: 50051
+#     prometheus_proxy:
+#       url: https://prometheus.spitikos.dev
+#       query_range_step_seconds: 15
+#       stream_interval_seconds: 1
