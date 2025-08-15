@@ -40,8 +40,6 @@ metadata:
   namespace: api
   labels:
     app: api
-  annotations:
-    traefik.ingress.kubernetes.io/service.serversscheme: h2c
 spec:
   type: ClusterIP
   ports:
