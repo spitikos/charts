@@ -22,8 +22,6 @@ spec:
           {{- if .Values.ingress.scheme }}
           scheme: {{ .Values.ingress.scheme }}
           {{- end }}
-      middlewares:
-        - name: {{ include "common.fullname" . }}-middleware
-          namespace: {{ .Release.Namespace }}
+
 {{- end }}
 {{- end -}}
