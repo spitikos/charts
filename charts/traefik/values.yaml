@@ -4,13 +4,20 @@ traefik:
 
   # Disable the default entrypoints to avoid conflicts
   entryPoints:
-    web: null
-    websecure: null
+    web:
+      address: :80
+    websecure:
+      address: :443
+      http2:
+        enabled: true
 
   ports:
     web:
       port: 80
       exposedPort: 30080
+    websecure:
+      port: 443
+      exposedPort: 30443
     traefik:
       port: 8080
 
