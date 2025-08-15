@@ -19,5 +19,7 @@ spec:
       services:
         - name: {{ include "common.fullname" . }}
           port: {{ .Values.service.port }}
+          scheme: {{ .Values.ingress.scheme | default "http" }}
+          serversTransport: {{ include "common.fullname" . }}
 {{- end }}
 {{- end -}}

@@ -4,4 +4,18 @@
 ---
 {{- include "common.ingress-route" . | nindent 0 }}
 ---
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: {{ include "common.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  serverName: {{ include "common.fullname" . }}
+  insecureSkipVerify: true
+  forwardingTimeouts:
+    dialTimeout: 10s
+    responseHeaderTimeout: 10s
+    idleConnTimeout: 10s
+  disableHTTP2: false
+---
 {{- include "common.configmap" . | nindent 0 }}
