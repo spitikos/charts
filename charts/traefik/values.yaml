@@ -11,10 +11,6 @@ traefik:
     web:
       port: 80
       exposedPort: 30080
-    grpc:
-      port: 50051
-      exposedPort: 30051
-      protocol: TCP
     traefik:
       port: 8080
 

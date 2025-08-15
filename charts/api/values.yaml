@@ -13,7 +13,7 @@ ingress:
   enabled: true
   host: api.spitikos.dev
   path: /
-  entryPoint: grpc
+  entryPoint: web
 config:
   mountDir: /config
   filename: config.yaml

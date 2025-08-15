@@ -22,10 +22,8 @@ spec:
           {{- if .Values.ingress.scheme }}
           scheme: {{ .Values.ingress.scheme }}
           {{- end }}
-      {{- if .Values.ingress.middleware.enabled }}
       middlewares:
         - name: {{ include "common.fullname" . }}-middleware
           namespace: {{ .Release.Namespace }}
-      {{- end }}
 {{- end }}
 {{- end -}}
