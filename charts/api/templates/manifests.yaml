@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: "ghcr.io/spitikos/api:11f5aabacc37fb3fcb9de71d4c3845f755e8f259"
+          image: "ghcr.io/spitikos/api:36baed5ff4e16c7285bae19f18e5c28c943a757b"
           imagePullPolicy: Always
           ports:
             - name: grpc
