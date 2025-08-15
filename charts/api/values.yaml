@@ -13,7 +13,6 @@ ingress:
   enabled: true
   host: api.spitikos.dev
   entryPoint: web
-  scheme: h2c
 config:
   mountDir: /config
   filename: config.yaml
