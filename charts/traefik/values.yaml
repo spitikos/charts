@@ -2,22 +2,14 @@ traefik:
   rbac:
     enabled: true
 
-  # Disable the default entrypoints to avoid conflicts
   entryPoints:
-    web:
-      address: :80
-    websecure:
-      address: :443
-      http2:
-        enabled: true
+    web: null
+    websecure: null
 
   ports:
     web:
       port: 80
       exposedPort: 30080
-    websecure:
-      port: 443
-      exposedPort: 30443
     traefik:
       port: 8080
 

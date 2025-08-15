@@ -15,5 +15,4 @@ service:
 ingress:
   enabled: true
   host: spitikos.dev
-  scheme: http
 
