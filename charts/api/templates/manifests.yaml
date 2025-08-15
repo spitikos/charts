@@ -9,11 +9,13 @@ spec:
   replicas: 5
   selector:
     matchLabels:
-      app: api
+      app.kubernetes.io/name: api
+      app.kubernetes.io/instance: api
   template:
     metadata:
       labels:
-        app: api
+        app.kubernetes.io/name: api
+        app.kubernetes.io/instance: api
     spec:
       containers:
         - name: api
