@@ -8,6 +8,7 @@ service:
   port: 50051
   containerPort: 50051
   portName: grpc
+  appProtocol: grpc
 ingress:
   enabled: true
   host: api.spitikos.dev

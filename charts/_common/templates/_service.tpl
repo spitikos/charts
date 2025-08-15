@@ -20,6 +20,7 @@ spec:
       targetPort: {{ .Values.service.containerPort }}
       protocol: TCP
       name: {{ .Values.service.portName }}
+      appProtocol: {{ .Values.service.appProtocol | default "http" }}
   selector:
     {{- include "common.selectorLabels" . | nindent 4 }}
 {{- end -}}

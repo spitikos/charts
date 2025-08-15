@@ -20,5 +20,6 @@ spec:
         - name: {{ include "common.fullname" . }}
           port: {{ .Values.service.port }}
           scheme: {{ .Values.ingress.scheme | default "http" }}
+          passHostHeader: true
 {{- end }}
 {{- end -}}
