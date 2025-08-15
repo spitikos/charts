@@ -10,7 +10,6 @@ service:
   port: 80
   containerPort: 3000
   portName: http
-  appProtocol: http
 
 ingress:
   enabled: true
