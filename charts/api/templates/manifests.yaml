@@ -45,7 +45,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 50051
+    - port: 80
       targetPort: 50051
       protocol: TCP
       name: grpc
@@ -68,7 +68,7 @@ spec:
       kind: Rule
       services:
         - name: api
-          port: 50051
+          port: 80
           scheme: h2c
           passHostHeader: true
 ---
