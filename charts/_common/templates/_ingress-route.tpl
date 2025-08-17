@@ -6,7 +6,7 @@ Define the common ingress-route resource.
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ include "common.fullname" . }}-ingress-route
+  name: {{ include "common.fullname" . }}-ingress
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "common.labels" . | nindent 4 }}

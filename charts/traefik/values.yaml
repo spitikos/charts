@@ -27,6 +27,10 @@ traefik:
     traefik:
       port: 8080
 
+  logs:
+    access:
+      enabled: true
+
   providers:
     kubernetesCRD:
       allowCrossNamespace: true
