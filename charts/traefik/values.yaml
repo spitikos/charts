@@ -41,3 +41,4 @@ traefik:
 ingress:
   enabled: true
   host: traefik.spitikos.dev
+  entryPoint: websecure
