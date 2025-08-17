@@ -9,7 +9,9 @@ service:
   containerPort: 50051
   portName: grpc
 ingress:
-  enabled: false
+  enabled: true
+  host: api.spitikos.dev
+  scheme: h2c
 config:
   mountDir: /config
   filename: config.yaml
