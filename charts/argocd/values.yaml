@@ -1,0 +1,19 @@
+argocd:
+  configs:
+    params:
+      server.insecure: "true"
+  server:
+    ingress:
+      enabled: true
+      ingressClassName: traefik
+      hosts:
+        - argocd.spitikos.dev
+      annotations:
+        kubernetes.io/ingress.class: traefik
+      traefik:
+        ingressRoute:
+          enabled: true
+          entryPoints:
+            - websecure
+          serversTransport:
+            insecureSkipVerify: true
