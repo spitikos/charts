@@ -1,4 +1,6 @@
 argocd:
+  global:
+    domain: argocd.spitikos.dev
   configs:
     params:
       server.insecure: "true"
