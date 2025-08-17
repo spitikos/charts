@@ -8,8 +8,6 @@ argocd:
     ingress:
       enabled: true
       ingressClassName: traefik
-      hosts:
-        - argocd.spitikos.dev
       annotations:
         kubernetes.io/ingress.class: traefik
       traefik:
