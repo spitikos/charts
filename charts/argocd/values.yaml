@@ -5,17 +5,18 @@ argocd:
     params:
       server.insecure: "true"
   server:
-    service:
-      type: ClusterIP
-    ingress:
-      enabled: true
-      ingressClassName: traefik
-      annotations:
-        kubernetes.io/ingress.class: traefik
-      traefik:
-        ingressRoute:
-          enabled: true
-          entryPoints:
-            - websecure
-          serversTransport:
-            insecureSkipVerify: true
+    insecure: true
+    # service:
+    #   type: ClusterIP
+    # ingress:
+    #   enabled: true
+    #   ingressClassName: traefik
+    #   annotations:
+    #     kubernetes.io/ingress.class: traefik
+    #   traefik:
+    #     ingressRoute:
+    #       enabled: true
+    #       entryPoints:
+    #         - websecure
+    #       serversTransport:
+    #         insecureSkipVerify: true
