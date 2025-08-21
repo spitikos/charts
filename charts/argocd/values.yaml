@@ -5,6 +5,8 @@ argocd:
     params:
       server.insecure: "true"
   server:
+    service:
+      type: ClusterIP
     ingress:
       enabled: true
       ingressClassName: traefik
