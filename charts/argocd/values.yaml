@@ -1,19 +1,34 @@
 argocd:
-  global:
-    domain: argocd.spitikos.dev
+  # This is the correct way to pass the insecure flag
+  configs:
+    params:
+      "server.insecure": "true"
+
+  # We explicitly set the service to ClusterIP to avoid conflicts
   server:
-    insecure: true
-    # service:
-    #   type: ClusterIP
-    # ingress:
-    #   enabled: true
-    #   ingressClassName: traefik
-    #   annotations:
-    #     kubernetes.io/ingress.class: traefik
-    #   traefik:
-    #     ingressRoute:
-    #       enabled: true
-    #       entryPoints:
-    #         - websecure
-    #       serversTransport:
-    #         insecureSkipVerify: true
+    service:
+      type: ClusterIP
+
+    # Use the chart's built-in, correct ingress configuration
+    ingress:
+      enabled: true
+      ingressClassName: traefik
+      hosts:
+        - argocd.spitikos.dev
+      annotations:
+        kubernetes.io/ingress.class: traefik
+      # This section correctly configures the Traefik IngressRoute
+      traefik:
+        ingressRoute:
+          enabled: true
+          entryPoints:
+            - websecure
+          # This is the critical part that was missing:
+          # it tells Traefik to trust the Argo CD server's certificate.
+          serversTransport:
+            insecureSkipVerify: true
+
+  repoServer:
+    service:
+      selector:
+        app.kubernetes.io/name: argocd-repo-server
