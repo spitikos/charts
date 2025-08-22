@@ -1,4 +1,5 @@
 nginx:
   controller:
+    logLevel: "DEBUG"
     config:
       use-forwarded-headers: "true"
