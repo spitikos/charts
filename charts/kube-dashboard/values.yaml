@@ -5,7 +5,6 @@ kubernetes-dashboard:
 ingress:
   enabled: true
   host: kube.spitikos.dev
-  entryPoint: websecure
 
 serviceAccount:
   create: false

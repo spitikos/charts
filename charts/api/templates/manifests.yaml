@@ -2,6 +2,6 @@
 ---
 {{- include "common.service" . | nindent 0 }}
 ---
-{{- include "common.ingress-route" . | nindent 0 }}
+{{- include "common.ingress" . | nindent 0 }}
 ---
 {{- include "common.configmap" . | nindent 0 }}

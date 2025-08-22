@@ -14,5 +14,4 @@ service:
 ingress:
   enabled: true
   host: spitikos.dev
-  entryPoint: websecure
 

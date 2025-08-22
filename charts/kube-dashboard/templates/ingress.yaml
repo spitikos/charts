@@ -1,19 +1,21 @@
-{{- if .Values.ingress.enabled -}}
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: {{ include "common.fullname" . }}-ingress
+  name: kube-dashboard-ingress
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "common.labels" . | nindent 4 }}
+  annotations:
+    kubernetes.io/ingress.class: nginx
 spec:
-  entryPoints:
-    - {{ .Values.ingress.entryPoint | default "web" }}
-  routes:
-    - match: Host(`{{ .Values.ingress.host }}`)
-      kind: Rule
-      services:
-        - name: {{ .Release.Name }}-kong-proxy
-          port: 443
-          serversTransport: {{ include "common.fullname" . }}-skip-verify
-{{- end }}
+  rules:
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Release.Name }}-kubernetes-dashboard
+            port:
+              number: 443

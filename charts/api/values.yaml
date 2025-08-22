@@ -11,8 +11,8 @@ service:
 ingress:
   enabled: true
   host: api.spitikos.dev
-  entryPoint: websecure
-  scheme: h2c
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
 config:
   mountDir: /config
   filename: config.yaml

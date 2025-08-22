@@ -55,4 +55,3 @@ kube-prometheus-stack:
 ingress:
   enabled: true
   host: prometheus.spitikos.dev
-  entryPoint: websecure
