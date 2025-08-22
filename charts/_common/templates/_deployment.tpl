@@ -29,7 +29,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: {{ .Values.service.portName | default "http" }}
-              containerPort: {{ .Values.service.containerPort }}
+              containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
           {{- if .Values.config }}
           volumeMounts:

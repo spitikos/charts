@@ -27,10 +27,17 @@ spec:
         pathType: Prefix
         backend:
           service:
-            # Use the override if provided, otherwise default to the standard service name.
             name: {{ .Values.ingress.serviceName | default (include "common.fullname" .) }}
             port:
-              # Use the override if provided, otherwise default to the standard service port.
-              number: {{ .Values.ingress.servicePort | default .Values.service.port }}
+              {{- /*
+                This if/else block is required because Helm's 'default' function
+                evaluates both arguments, which causes a nil pointer error if
+                a chart (like kube-dashboard) does not have a top-level .Values.service block.
+              */}}
+              {{- if .Values.ingress.servicePort }}
+              number: {{ .Values.ingress.servicePort }}
+              {{- else }}
+              number: {{ .Values.service.port }}
+              {{- end }}
 {{- end }}
 {{- end -}}
