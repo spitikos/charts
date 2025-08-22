@@ -11,11 +11,11 @@ metadata:
   labels:
     {{- include "common.labels" . | nindent 4 }}
   annotations:
-    kubernetes.io/ingress.class: nginx
     {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
 spec:
+  ingressClassName: {{ .Values.ingress.className | default "nginx" }}
   tls:
   - hosts:
     - {{ .Values.ingress.host }}
@@ -29,11 +29,6 @@ spec:
           service:
             name: {{ .Values.ingress.serviceName | default (include "common.fullname" .) }}
             port:
-              {{- /*
-                This if/else block is required because Helm's 'default' function
-                evaluates both arguments, which causes a nil pointer error if
-                a chart (like kube-dashboard) does not have a top-level .Values.service block.
-              */}}
               {{- if .Values.ingress.servicePort }}
               number: {{ .Values.ingress.servicePort }}
               {{- else }}

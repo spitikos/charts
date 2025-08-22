@@ -38,6 +38,8 @@ ingress:
   # The public-facing hostname for the service.
   # Example: spitikos.dev
   host: ""
+  # The class of the Ingress controller. Should be "nginx" for this project.
+  className: "nginx"
   # -- Annotations to add to the Ingress resource.
   # This is critical for configuring specific NGINX behavior.
   # For gRPC, you would add:
