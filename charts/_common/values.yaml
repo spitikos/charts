@@ -1,0 +1,72 @@
+# This is a sample values.yaml file for the _common library chart.
+# It is intended for documentation purposes to show all available fields.
+# Application charts should override these values in their own values.yaml.
+
+# -- The number of pod replicas to deploy.
+replicaCount: 1
+
+# -- Configuration for the container image.
+image:
+  # The repository (name) of the container image.
+  # Example: ghcr.io/spitikos/homepage
+  repository: ""
+  # The policy for pulling the image.
+  # Allowed values: Always, IfNotPresent, Never
+  pullPolicy: Always
+  # The tag of the image to pull. This is typically a commit SHA.
+  tag: ""
+
+# -- Configuration for the Kubernetes Service resource.
+# This service exposes the application pods within the cluster.
+service:
+  # The type of service to create.
+  # For internal services, this should always be ClusterIP.
+  type: ClusterIP
+  # The port that the service will expose.
+  port: 80
+  # The port on the container that the service should send traffic to.
+  targetPort: 80
+  # The name of the service port.
+  # Set to "grpc" for gRPC services to enable specific ingress behavior.
+  portName: http
+
+# -- Configuration for the NGINX Ingress resource.
+# This exposes the service to the outside world via the NGINX Ingress Controller.
+ingress:
+  # Whether to create an Ingress resource.
+  enabled: false
+  # The public-facing hostname for the service.
+  # Example: spitikos.dev
+  host: ""
+  # -- Annotations to add to the Ingress resource.
+  # This is critical for configuring specific NGINX behavior.
+  # For gRPC, you would add:
+  #   nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
+  # For services that listen on HTTPS, you would add:
+  #   nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+  annotations: {}
+  # -- (Optional) Override for the backend service name.
+  # Use this if the service name is different from the release name
+  # (e.g., for third-party charts).
+  serviceName: ""
+  # -- (Optional) Override for the backend service port.
+  # Use this if the Ingress needs to point to a different port than the
+  # main service port.
+  servicePort: 0
+
+# -- (Optional) Configuration for a ConfigMap.
+# If this section is present, a ConfigMap will be created and mounted
+# into the application pods.
+config:
+  # The directory inside the container where the ConfigMap should be mounted.
+  # Example: /app/config
+  mountDir: ""
+  # The filename for the key within the ConfigMap.
+  # Example: config.yaml
+  filename: ""
+  # The data to be stored in the ConfigMap.
+  # This should be a multi-line string.
+  data: ""
+
+# -- (Optional) A list of secrets to be used for pulling the container image.
+imagePullSecrets: []
