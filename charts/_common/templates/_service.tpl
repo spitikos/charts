@@ -13,7 +13,7 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.containerPort }}
+      targetPort: {{ .Values.service.targetPort }}
       protocol: TCP
       name: {{ .Values.service.portName }}
   selector:

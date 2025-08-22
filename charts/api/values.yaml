@@ -6,7 +6,7 @@ image:
 service:
   type: ClusterIP
   port: 50051
-  containerPort: 50051
+  targetPort: 50051
   portName: grpc
 ingress:
   enabled: true

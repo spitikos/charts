@@ -27,8 +27,10 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: {{ include "common.fullname" . }}
+            # Use the override if provided, otherwise default to the standard service name.
+            name: {{ .Values.ingress.serviceName | default (include "common.fullname" .) }}
             port:
-              number: {{ .Values.service.port }}
+              # Use the override if provided, otherwise default to the standard service port.
+              number: {{ .Values.ingress.servicePort | default .Values.service.port }}
 {{- end }}
 {{- end -}}

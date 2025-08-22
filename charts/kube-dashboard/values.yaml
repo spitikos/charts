@@ -5,6 +5,10 @@ kubernetes-dashboard:
 ingress:
   enabled: true
   host: kube.spitikos.dev
+  serviceName: kubernetes-dashboard-wrapper-kubernetes-dashboard
+  servicePort: 443
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 
 serviceAccount:
   create: false
