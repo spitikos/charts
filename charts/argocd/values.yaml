@@ -1,34 +1,27 @@
+# This top-level key MUST match the alias in Chart.yaml
 argocd:
-  # This is the correct way to pass the insecure flag
+  # This tells the Argo CD server that it is running behind a proxy.
   configs:
     params:
       "server.insecure": "true"
 
-  # We explicitly set the service to ClusterIP to avoid conflicts
+  # We explicitly set the server's service to ClusterIP to avoid port conflicts.
   server:
     service:
       type: ClusterIP
 
-    # Use the chart's built-in, correct ingress configuration
+    # This section enables and configures the NGINX Ingress.
     ingress:
       enabled: true
-      ingressClassName: traefik
+      ingressClassName: nginx
       hosts:
         - argocd.spitikos.dev
       annotations:
-        kubernetes.io/ingress.class: traefik
-      # This section correctly configures the Traefik IngressRoute
-      traefik:
-        ingressRoute:
-          enabled: true
-          entryPoints:
-            - websecure
-          # This is the critical part that was missing:
-          # it tells Traefik to trust the Argo CD server's certificate.
-          serversTransport:
-            insecureSkipVerify: true
-
-  repoServer:
-    service:
-      selector:
-        app.kubernetes.io/name: argocd-repo-server
+        # This tells NGINX to connect to the Argo CD server using HTTPS,
+        # as the server's own web server listens on TLS.
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      tls:
+        - hosts:
+          - argocd.spitikos.dev
+          # The Argo CD chart will automatically create a self-signed cert
+          # if no secretName is provided, which is perfect for this setup.
