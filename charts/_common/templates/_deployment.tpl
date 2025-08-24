@@ -16,6 +16,10 @@ spec:
       {{- include "common.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      {{- if .Values.config }}
+      annotations:
+        checksum/config: {{ toYaml .Values.config.data | sha256sum }}
+      {{- end }}
       labels:
         {{- include "common.selectorLabels" . | nindent 8 }}
     spec:
