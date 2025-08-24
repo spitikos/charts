@@ -9,6 +9,8 @@ kube-prometheus-stack:
     enabled: true
   prometheus:
     enabled: true
+    prometheusSpec:
+      scrapeInterval: 15s
 
 ingress:
   enabled: true
