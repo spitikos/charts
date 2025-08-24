@@ -12,6 +12,12 @@ ingress:
   enabled: true
   host: api.spitikos.dev
   annotations:
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "http://localhost:3000,https://spitikos.dev"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "Content-Type,connect-protocol-version"
+    nginx.ingress.kubernetes.io/cors-expose-headers: "connect-content-encoding"
+  annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
 config:
   mountDir: /config
