@@ -2,7 +2,7 @@ replicaCount: 3
 image:
   repository: ghcr.io/spitikos/api
   pullPolicy: Always
-  tag: a6c73ced190343cd74c3ff1f54d0357540130727
+  tag: f8215bc060e76c98bda142c4f72da197a690189e
 service:
   type: ClusterIP
   port: 50051
@@ -12,12 +12,12 @@ ingress:
   enabled: true
   host: api.spitikos.dev
   annotations:
-    nginx.ingress.kubernetes.io/enable-cors: "true"
-    nginx.ingress.kubernetes.io/cors-allow-origin: "http://localhost:3000,https://spitikos.dev"
-    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST"
-    nginx.ingress.kubernetes.io/cors-allow-headers: "Content-Type,Connect-Protocol-Version,Connect-Timeout-Ms,Grpc-Timeout,X-Grpc-Web,X-User-Agent"
-    nginx.ingress.kubernetes.io/cors-expose-headers: "Grpc-Status,Grpc-Message,Grpc-Status-Details-Bin"
-    nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
+    nginx.ingress.kubernetes.io/enable-cors: 'true'
+    nginx.ingress.kubernetes.io/cors-allow-origin: http://localhost:3000,https://spitikos.dev
+    nginx.ingress.kubernetes.io/cors-allow-methods: GET, POST
+    nginx.ingress.kubernetes.io/cors-allow-headers: Content-Type,Connect-Protocol-Version,Connect-Timeout-Ms,Grpc-Timeout,X-Grpc-Web,X-User-Agent
+    nginx.ingress.kubernetes.io/cors-expose-headers: Grpc-Status,Grpc-Message,Grpc-Status-Details-Bin
+    nginx.ingress.kubernetes.io/backend-protocol: GRPC
 config:
   mountDir: /config
   filename: config.yaml
