@@ -2,7 +2,7 @@ replicaCount: 3
 image:
   repository: ghcr.io/spitikos/api
   pullPolicy: Always
-  tag: 00ff1e8d3f56f606388c1e05dfc1d7bb672f7cea
+  tag: a6c73ced190343cd74c3ff1f54d0357540130727
 service:
   type: ClusterIP
   port: 50051
@@ -17,7 +17,6 @@ ingress:
     nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, OPTIONS"
     nginx.ingress.kubernetes.io/cors-allow-headers: "Content-Type,connect-protocol-version"
     nginx.ingress.kubernetes.io/cors-expose-headers: "connect-content-encoding"
-  annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
 config:
   mountDir: /config
