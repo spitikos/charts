@@ -1,5 +1,7 @@
 ingress-nginx:
   controller:
+    hostPort:
+      enabled: false
     logLevel: "DEBUG"
     config:
       use-forwarded-headers: "true"
