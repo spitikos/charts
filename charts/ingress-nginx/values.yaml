@@ -13,6 +13,8 @@ ingress-nginx:
         enabled: true
         namespace: prometheus
         scrapeInterval: 15s
+        additionalLabels:
+          release: prometheus
     hostPort:
       enabled: false
     logLevel: "DEBUG"
