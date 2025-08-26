@@ -41,5 +41,3 @@ scaledobject:
   prometheus:
     query: sum(rate(nginx_ingress_controller_requests{service="api"}[2m]))
     threshold: '5'
-image:
-  tag: b5df71e6476153985ae852a0805597500ae49f94
