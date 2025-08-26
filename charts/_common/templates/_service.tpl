@@ -1,6 +1,3 @@
-{{/*
-Define the common service resource.
-*/}}
 {{- define "common.service" -}}
 apiVersion: v1
 kind: Service

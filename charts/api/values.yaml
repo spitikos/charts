@@ -1,13 +1,23 @@
-replicaCount: 3
-image:
-  repository: ghcr.io/spitikos/api
-  pullPolicy: Always
-  tag: 5fe5dee59bf43fabedcc7d8d2d40d23d04be0b68
+deployment:
+  replicaCount: 3
+  image:
+    repository: ghcr.io/spitikos/api
+    pullPolicy: Always
+    tag: 5fe5dee59bf43fabedcc7d8d2d40d23d04be0b68
+  resources:
+    requests:
+      cpu: 100m
+      memory: 64Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+
 service:
   type: ClusterIP
   port: 50051
   targetPort: 50051
   portName: grpc
+
 ingress:
   enabled: true
   host: api.spitikos.dev
@@ -18,7 +28,9 @@ ingress:
     nginx.ingress.kubernetes.io/cors-allow-headers: Content-Type,Connect-Protocol-Version,Connect-Timeout-Ms,Grpc-Timeout,X-Grpc-Web,X-User-Agent
     nginx.ingress.kubernetes.io/cors-expose-headers: Grpc-Status,Grpc-Message,Grpc-Status-Details-Bin
     nginx.ingress.kubernetes.io/backend-protocol: GRPC
-config:
+
+configmap:
+  enabled: true
   mountDir: /config
   filename: config.yaml
   data:
@@ -28,3 +40,11 @@ config:
     prometheus:
       url: https://prometheus.spitikos.dev
       queryRangeStepSeconds: 15
+
+scaledobject:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 5
+  prometheus:
+    query: 'sum(rate(nginx_ingress_controller_requests{service="api"}[2m]))'
+    threshold: "5"

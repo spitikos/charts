@@ -6,11 +6,28 @@ applications:
     releaseName: api
     syncOptions:
       - CreateNamespace=true
+    ignoreDifferences:
+      - group: apps
+        kind: Deployment
+        jsonPointers:
+          - /spec/replicas
 
   - name: homepage
     namespace: homepage
     path: charts/homepage
     releaseName: homepage
+    syncOptions:
+      - CreateNamespace=true
+    ignoreDifferences:
+      - group: apps
+        kind: Deployment
+        jsonPointers:
+          - /spec/replicas
+
+  - name: keda
+    namespace: keda
+    path: charts/keda
+    releaseName: keda
     syncOptions:
       - CreateNamespace=true
 

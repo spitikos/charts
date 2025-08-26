@@ -1,8 +1,5 @@
-{{/*
-Define a common ConfigMap resource.
-*/}}
 {{- define "common.configmap" -}}
-{{- if .Values.config }}
+{{- if .Values.configmap.enabled -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -11,7 +8,7 @@ metadata:
   labels:
     {{- include "common.labels" . | nindent 4 }}
 data:
-  {{ .Values.config.filename }}: |
-    {{- toYaml .Values.config.data | nindent 4 }}
+  {{ .Values.configmap.filename }}: |
+    {{- toYaml .Values.configmap.data | nindent 4 }}
 {{- end -}}
 {{- end -}}

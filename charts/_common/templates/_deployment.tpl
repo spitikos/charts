@@ -1,6 +1,3 @@
-{{/*
-Define the common deployment resource.
-*/}}
 {{- define "common.deployment" -}}
 apiVersion: apps/v1
 kind: Deployment
@@ -10,37 +7,41 @@ metadata:
   labels:
     {{- include "common.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.deployment.replicaCount }}
   selector:
     matchLabels:
       {{- include "common.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- if .Values.config }}
+      {{- if .Values.configmap.enabled }}
       annotations:
-        checksum/config: {{ toYaml .Values.config.data | sha256sum }}
+        checksum/config: {{ toYaml .Values.configmap.data | sha256sum }}
       {{- end }}
       labels:
         {{- include "common.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
+      {{- with .Values.deployment.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
         - name: {{ include "common.fullname" . }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
+          imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
           ports:
             - name: {{ .Values.service.portName | default "http" }}
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
-          {{- if .Values.config }}
+          {{- with .Values.deployment.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- if .Values.configmap.enabled }}
           volumeMounts:
             - name: config
-              mountPath: {{ .Values.config.mountDir }}
+              mountPath: {{ .Values.configmap.mountDir }}
           {{- end }}
-      {{- if .Values.config }}
+      {{- if .Values.configmap.enabled }}
       volumes:
         - name: config
           configMap:

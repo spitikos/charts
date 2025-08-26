@@ -4,12 +4,26 @@ kube-prometheus-stack:
   alertmanager:
     enabled: false
   prometheusOperator:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 256Mi
     enabled: true
   nodeExporter:
     enabled: true
   prometheus:
     enabled: true
     prometheusSpec:
+      resources:
+        requests:
+          cpu: 250m
+          memory: 512Mi
+        limits:
+          cpu: "1"
+          memory: 1Gi
       scrapeInterval: 15s
 
 ingress:
