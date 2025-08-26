@@ -15,7 +15,7 @@ tasks:
       - helm dependency build ./charts/argocd
       - helm install argocd ./charts/argocd --namespace argocd
     silent: true
-  argo:clean:
+  argo:rm:
     desc: Delete ArgoCD applications and namespace
     cmds:
       - for app in $(kubectl get applications.argoproj.io -n argocd -o name); do
