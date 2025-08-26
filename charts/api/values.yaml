@@ -40,4 +40,4 @@ scaledobject:
   maxReplicas: 5
   prometheus:
     query: 'sum(rate(nginx_ingress_controller_requests{exported_service="api"}[2m]))'
-    threshold: 5
+    threshold: 1
