@@ -1,7 +1,13 @@
 version: "3"
 
 tasks:
-  argo-install:
+  argo:update:
+    desc: Update ArgoCD applications
+    cmds:
+      - helm dependency update ./charts/argocd
+      - helm upgrade argocd ./charts/argocd --namespace argocd
+    silent: true
+  argo:install:
     desck: Install ArgoCD applications and namespace
     cmds:
       - kubectl create namespace argocd
@@ -9,12 +15,12 @@ tasks:
       - helm dependency build ./charts/argocd
       - helm install argocd ./charts/argocd --namespace argocd
     silent: true
-  argo-clean:
+  argo:clean:
     desc: Delete ArgoCD applications and namespace
     cmds:
       - for app in $(kubectl get applications.argoproj.io -n argocd -o name); do
-          echo "Patching $app to remove finalizers";
-          kubectl patch $app -n argocd --type=json -p='[{"op":"remove","path":"/metadata/finalizers"}]'
+        echo "Patching $app to remove finalizers";
+        kubectl patch $app -n argocd --type=json -p='[{"op":"remove","path":"/metadata/finalizers"}]'
         done
       - kubectl delete applications.argoproj.io --all -n argocd
       - kubectl delete namespace argocd

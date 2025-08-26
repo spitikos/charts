@@ -1,4 +1,4 @@
-nginx:
+ingress-nginx:
   controller:
     logLevel: "DEBUG"
     config:
