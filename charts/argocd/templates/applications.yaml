@@ -1,0 +1,35 @@
+{{- range .Values.applications }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .name }}
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argroj.io
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/spitikos/charts.git"
+    targetRevision: HEAD
+    path: {{ .path }}
+    helm:
+      releaseName: {{ .releaseName }}
+      valueFiles:
+        - values.yaml
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: {{ .namespace }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    {{- if .syncOptions }}
+    syncOptions:
+      {{- toYaml .syncOptions | nindent 6 }}
+    {{- end }}
+  {{- if .ignoreDifferences }}
+  ignoreDifferences:
+    {{- toYaml .ignoreDifferences | nindent 4 }}
+  {{- end }}
+---
+{{- end }}

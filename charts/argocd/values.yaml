@@ -1,0 +1,56 @@
+applications:
+
+  - name: api
+    namespace: api
+    path: charts/api
+    releaseName: api
+    syncOptions:
+      - CreateNamespace=true
+
+  - name: homepage
+    namespace: homepage
+    path: charts/homepage
+    releaseName: homepage
+    syncOptions:
+      - CreateNamespace=true
+
+  - name: kube-dashboard
+    namespace: kube-dashboard
+    path: charts/kube-dashboard
+    releaseName: kube-dashboard
+    syncOptions:
+      - CreateNamespace=true
+    ignoreDifferences:
+      - group: apiextensions.k8s.io
+        kind: CustomResourceDefinition
+        jsonPointers:
+          - /spec
+
+  - name: nginx
+    namespace: nginx
+    path: charts/nginx
+    releaseName: nginx
+    syncOptions:
+      - CreateNamespace=true
+
+  - name: prometheus
+    namespace: prometheus
+    path: charts/prometheus
+    releaseName: prometheus
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+    ignoreDifferences:
+      - group: apiextensions.k8s.io
+        kind: CustomResourceDefinition
+        jsonPointers:
+          - /spec
+          - /metadata/annotations
+
+ingress:
+  enabled: true
+  host: argocd.spitikos.dev
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+  serviceName: argocd-server
+  servicePort: 443
