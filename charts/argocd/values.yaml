@@ -30,6 +30,7 @@ applications:
     releaseName: keda
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=true
 
   - name: redis
     namespace: redis
