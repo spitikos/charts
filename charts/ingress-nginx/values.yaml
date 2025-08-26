@@ -7,6 +7,12 @@ ingress-nginx:
       limits:
         cpu: 1000m
         memory: 512Mi
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        namespace: prometheus
+        scrapeInterval: 15s
     hostPort:
       enabled: false
     logLevel: "DEBUG"
