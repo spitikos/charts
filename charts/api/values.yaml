@@ -40,7 +40,7 @@ configmap:
       queryRangeStepSeconds: 15
 
 scaledobject:
-  minReplicas: 0
+  minReplicas: 1
   maxReplicas: 5
   prometheus:
     query: 'sum(rate(nginx_ingress_controller_requests{service="api"}[2m]))'
