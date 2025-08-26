@@ -1,17 +1,13 @@
 replicaCount: 1
-
 image:
   repository: ghcr.io/spitikos/homepage
   pullPolicy: Always
-  tag: 59984b1b572019ded32a063cd07abcd36a299776
-
+  tag: 42e44843b30de478c14ed3e23743926563905d27
 service:
   type: ClusterIP
   port: 80
   targetPort: 3000
   portName: http
-
 ingress:
   enabled: true
   host: spitikos.dev
-
