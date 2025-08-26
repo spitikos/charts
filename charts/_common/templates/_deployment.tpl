@@ -1,3 +1,6 @@
+{{/*
+Define the common deployment resource.
+*/}}
 {{- define "common.deployment" -}}
 apiVersion: apps/v1
 kind: Deployment
@@ -13,7 +16,7 @@ spec:
       {{- include "common.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- if .Values.configmap.enabled }}
+      {{- if .Values.configmap }}
       annotations:
         checksum/config: {{ toYaml .Values.configmap.data | sha256sum }}
       {{- end }}
@@ -36,12 +39,12 @@ spec:
           resources:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- if .Values.configmap.enabled }}
+          {{- if .Values.configmap }}
           volumeMounts:
             - name: config
               mountPath: {{ .Values.configmap.mountDir }}
           {{- end }}
-      {{- if .Values.configmap.enabled }}
+      {{- if .Values.configmap }}
       volumes:
         - name: config
           configMap:

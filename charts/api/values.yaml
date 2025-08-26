@@ -19,7 +19,6 @@ service:
   portName: grpc
 
 ingress:
-  enabled: true
   host: api.spitikos.dev
   annotations:
     nginx.ingress.kubernetes.io/enable-cors: 'true'
@@ -30,7 +29,6 @@ ingress:
     nginx.ingress.kubernetes.io/backend-protocol: GRPC
 
 configmap:
-  enabled: true
   mountDir: /config
   filename: config.yaml
   data:
@@ -42,8 +40,7 @@ configmap:
       queryRangeStepSeconds: 15
 
 scaledobject:
-  enabled: true
-  minReplicas: 1
+  minReplicas: 0
   maxReplicas: 5
   prometheus:
     query: 'sum(rate(nginx_ingress_controller_requests{service="api"}[2m]))'

@@ -1,5 +1,5 @@
 {{- define "common.ingress" -}}
-{{- if .Values.ingress.enabled -}}
+{{- if .Values.ingress -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:

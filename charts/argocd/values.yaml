@@ -73,7 +73,6 @@ applications:
           - /metadata/annotations
 
 ingress:
-  enabled: true
   host: argocd.spitikos.dev
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"

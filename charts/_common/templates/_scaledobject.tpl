@@ -3,7 +3,7 @@ Define a common KEDA ScaledObject resource.
 This allows applications to be scaled based on Prometheus metrics.
 */}}
 {{- define "common.scaledobject" -}}
-{{- if .Values.scaledobject.enabled -}}
+{{- if .Values.scaledobject -}}
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:

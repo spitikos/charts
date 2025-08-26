@@ -24,7 +24,6 @@ service:
   portName: http
 
 ingress:
-  enabled: false
   host: ""
   className: "nginx"
   annotations: {}
@@ -32,13 +31,11 @@ ingress:
   servicePort: 0
 
 configmap:
-  enabled: false
   mountDir: ""
   filename: ""
   data: ""
 
 scaledobject:
-  enabled: false
   minReplicas: 0
   maxReplicas: 5
   pollingInterval: 30
