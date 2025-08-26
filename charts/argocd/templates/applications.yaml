@@ -5,7 +5,7 @@ metadata:
   name: {{ .name }}
   namespace: argocd
   finalizers:
-    - resources-finalizer.argocd.argroj.io
+    - argocd.argoproj.io/resources-finalize
 spec:
   project: default
   source:
