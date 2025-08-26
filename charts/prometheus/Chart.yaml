@@ -1,6 +1,6 @@
 apiVersion: v2
 name: prometheus-wrapper
-description: A wrapper chart for deploying the kube-prometheus stack.
+description: A wrapper Helm chart for the kube-prometheus-stack chart.
 type: application
 version: 0.1.0
 appVersion: v0.83.0

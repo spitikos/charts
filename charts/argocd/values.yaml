@@ -14,10 +14,10 @@ applications:
     syncOptions:
       - CreateNamespace=true
 
-  - name: kube-dashboard
-    namespace: kube-dashboard
-    path: charts/kube-dashboard
-    releaseName: kube-dashboard
+  - name: kubernetes-dashboard
+    namespace: kubernetes-dashboard
+    path: charts/kubernetes-dashboard
+    releaseName: kubernetes-dashboard
     syncOptions:
       - CreateNamespace=true
     ignoreDifferences:
@@ -26,10 +26,10 @@ applications:
         jsonPointers:
           - /spec
 
-  - name: nginx
-    namespace: nginx
-    path: charts/nginx
-    releaseName: nginx
+  - name: ingress-nginx
+    namespace: ingress-nginx
+    path: charts/ingress-nginx
+    releaseName: ingress-nginx
     syncOptions:
       - CreateNamespace=true
 
