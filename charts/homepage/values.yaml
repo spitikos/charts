@@ -26,4 +26,4 @@ scaledobject:
   maxReplicas: 3
   prometheus:
     query: 'sum(rate(nginx_ingress_controller_requests{service="homepage"}[2m]))'
-    threshold: "10"
+    threshold: 10
