@@ -2,7 +2,7 @@ replicaCount: 3
 image:
   repository: ghcr.io/spitikos/api
   pullPolicy: Always
-  tag: 72f30b0c033851054babb2f41bba7e62c0c3af45
+  tag: 5fe5dee59bf43fabedcc7d8d2d40d23d04be0b68
 service:
   type: ClusterIP
   port: 50051
