@@ -65,10 +65,9 @@ jobs:
           repository: spitikos/charts
           token: ${{ secrets.GHA_PAT }}
 
-      - name: Setup yq and jq
+      - name: Setup yq
         run: |
-          sudo apt-get update
-          sudo apt-get install -y yq jq
+          sudo apt install -y yq
 
       - name: Update image tag in all charts
         run: |
