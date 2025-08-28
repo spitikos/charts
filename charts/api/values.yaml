@@ -3,7 +3,7 @@ deployment:
   image:
     repository: ghcr.io/spitikos/api
     pullPolicy: Always
-    tag: b5df71e6476153985ae852a0805597500ae49f94
+    tag: 06777fa4763b6ddd7dc81da82468f9e09ca0a28d
   resources:
     requests:
       cpu: 100m
@@ -39,5 +39,5 @@ scaledobject:
   minReplicas: 1
   maxReplicas: 5
   prometheus:
-    query: 'sum(rate(nginx_ingress_controller_requests{exported_service="api"}[2m]))'
+    query: sum(rate(nginx_ingress_controller_requests{exported_service="api"}[2m]))
     threshold: 1
