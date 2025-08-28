@@ -45,6 +45,11 @@ applications:
     releaseName: vault
     syncOptions:
       - CreateNamespace=true
+    ignoreDifferences:
+      - group: admissionregistration.k8s.io
+        kind: MutatingWebhookConfiguration
+        jsonPointers:
+          - /webhooks/0/clientConfig/caBundle
 
   - name: kubernetes-dashboard
     namespace: kubernetes-dashboard
