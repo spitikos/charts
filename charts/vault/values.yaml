@@ -10,5 +10,4 @@ ingress:
   host: vault.spitikos.dev
   serviceName: vault-ui
   servicePort: 8200
-  annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+
