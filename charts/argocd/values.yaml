@@ -39,6 +39,13 @@ applications:
     syncOptions:
       - CreateNamespace=true
 
+  - name: vault
+    namespace: vault
+    path: charts/vault
+    releaseName: vault
+    syncOptions:
+      - CreateNamespace=true
+
   - name: kubernetes-dashboard
     namespace: kubernetes-dashboard
     path: charts/kubernetes-dashboard
