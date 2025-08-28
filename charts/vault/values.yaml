@@ -6,12 +6,7 @@ vault:
     dev:
       enabled: true
 
-  ingress:
-    enabled: true
-    ingressClassName: "nginx"
-    hosts:
-      - host: vault.spitikos.dev
-        paths:
-          - path: /
-    annotations:
-      nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+ingress:
+  host: vault.spitikos.dev
+  serviceName: vault-ui
+  servicePort: 8200
