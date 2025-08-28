@@ -1,0 +1,13 @@
+ui:
+  enabled: true
+
+server:
+  ingress:
+    enabled: true
+    ingressClassName: "nginx"
+    annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    hosts:
+      - host: vault.spitikos.dev
+      - paths:
+        - path: /
