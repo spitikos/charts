@@ -9,7 +9,7 @@ deployment:
       valueFrom:
         secretKeyRef:
           name: api-github-token
-          key: token
+          key: GITHUB_TOKEN
   resources:
     requests:
       cpu: 100m
