@@ -3,7 +3,7 @@ deployment:
   image:
     repository: ghcr.io/spitikos/homepage
     pullPolicy: Always
-    tag: 42e44843b30de478c14ed3e23743926563905d27
+    tag: 7d5567f2ce576ec8757738f4b99a2de0e0c4ef37
   resources:
     requests:
       cpu: 100m
@@ -11,19 +11,16 @@ deployment:
     limits:
       cpu: 500m
       memory: 256Mi
-
 service:
   type: ClusterIP
   port: 80
   targetPort: 3000
   portName: http
-
 ingress:
   host: spitikos.dev
-
 scaledobject:
   minReplicas: 1
   maxReplicas: 3
   prometheus:
-    query: 'sum(rate(nginx_ingress_controller_requests{exported_service="homepage"}[2m]))'
+    query: sum(rate(nginx_ingress_controller_requests{exported_service="homepage"}[2m]))
     threshold: 1
