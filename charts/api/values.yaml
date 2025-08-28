@@ -4,6 +4,12 @@ deployment:
     repository: ghcr.io/spitikos/api
     pullPolicy: Always
     tag: b5df71e6476153985ae852a0805597500ae49f94
+  env:
+    - name: GITHUB_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: api-github-token
+          key: token
   resources:
     requests:
       cpu: 100m
@@ -25,6 +31,12 @@ ingress:
     nginx.ingress.kubernetes.io/cors-allow-headers: Content-Type,Connect-Protocol-Version,Connect-Timeout-Ms,Grpc-Timeout,X-Grpc-Web,X-User-Agent
     nginx.ingress.kubernetes.io/cors-expose-headers: Grpc-Status,Grpc-Message,Grpc-Status-Details-Bin
     nginx.ingress.kubernetes.io/backend-protocol: GRPC
+scaledobject:
+  minReplicas: 1
+  maxReplicas: 5
+  prometheus:
+    query: 'sum(rate(nginx_ingress_controller_requests{exported_service="api"}[2m]))'
+    threshold: 1
 configmap:
   mountDir: /config
   filename: config.yaml
@@ -33,11 +45,9 @@ configmap:
       port: 50051
       streamIntervalSeconds: 5
     prometheus:
-      url: https://prometheus.spitikos.dev
+      address: https://prometheus.spitikos.dev
       queryRangeStepSeconds: 15
-scaledobject:
-  minReplicas: 1
-  maxReplicas: 5
-  prometheus:
-    query: 'sum(rate(nginx_ingress_controller_requests{exported_service="api"}[2m]))'
-    threshold: 1
+    redis:
+      address: redis-master.redis.svc.cluster.local:6379
+    github:
+      owner: spitikos
