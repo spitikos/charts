@@ -6,6 +6,7 @@ deployment:
     tag: 06777fa4763b6ddd7dc81da82468f9e09ca0a28d
   podAnnotations:
     vault.hashicorp.com/agent-inject: "true"
+    vault.hashicorp.com/agent-pre-populate-only: "true"
     vault.hashicorp.com/role: "api"
     vault.hashicorp.com/agent-exec-command: "/server"
     vault.hashicorp.com/agent-inject-secret-config.env: "secret/data/spitikos/api"
