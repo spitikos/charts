@@ -51,6 +51,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ .Values.vault.configMapName }}
+                optional: true
           {{- end }}
           {{- with .Values.deployment.resources }}
           resources:
