@@ -9,6 +9,8 @@ deployment:
     pullPolicy: Always
     tag: ""
   imagePullSecrets: []
+  command: []
+  args: []
   resources: {}
    # requests:
    #   cpu: 100m
