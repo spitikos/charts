@@ -13,3 +13,7 @@ ingress:
   host: vault.spitikos.dev
   serviceName: vault-ui
   servicePort: 8200
+
+serviceAccount:
+  name: vault-auth
+  namespace: kube-system
