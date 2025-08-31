@@ -47,6 +47,12 @@ spec:
           env:
             {{- toYaml . | nindent 12 }}
           {{- end }}
+          {{- if .Values.vault.createConfigMap }}
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.vault.configMapName }}
+                optional: true
+          {{- end }}
           {{- with .Values.deployment.resources }}
           resources:
             {{- toYaml . | nindent 12 }}

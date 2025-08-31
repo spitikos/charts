@@ -19,6 +19,10 @@ deployment:
    #   cpu: 500m
    #   memory: 256Mi
 
+vault:
+  createConfigMap: false
+  configMapName: ""
+
 service:
   type: ClusterIP
   port: 80
