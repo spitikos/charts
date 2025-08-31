@@ -6,8 +6,10 @@ vault:
     dev:
       enabled: true
 
+  injector:
+    enabled: true
+
 ingress:
   host: vault.spitikos.dev
   serviceName: vault-ui
   servicePort: 8200
-
