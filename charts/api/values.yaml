@@ -23,7 +23,7 @@ deployment:
       cpu: 250m
       memory: 128Mi
 serviceAccount:
-  name: ""
+  name: "api"
 service:
   type: ClusterIP
   port: 50051
