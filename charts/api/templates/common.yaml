@@ -7,4 +7,5 @@
 {{- include "common.configmap" . | nindent 0 }}
 ---
 {{- include "common.scaledobject" . | nindent 0 }}
-
+---
+{{- include "common.serviceaccount" . | nindent 0 }}

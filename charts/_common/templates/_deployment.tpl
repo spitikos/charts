@@ -16,9 +16,14 @@ spec:
       {{- include "common.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- if .Values.configmap }}
+      {{- if or .Values.deployment.podAnnotations .Values.configmap }}
       annotations:
+        {{- with .Values.deployment.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+        {{- if .Values.configmap }}
         checksum/config: {{ toYaml .Values.configmap.data | sha256sum }}
+        {{- end }}
       {{- end }}
       labels:
         {{- include "common.selectorLabels" . | nindent 8 }}
@@ -26,6 +31,9 @@ spec:
       {{- with .Values.deployment.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if .Values.serviceAccount }}
+      serviceAccountName: {{ include "common.serviceAccountName" . }}
       {{- end }}
       containers:
         - name: {{ include "common.fullname" . }}
