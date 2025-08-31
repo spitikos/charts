@@ -4,11 +4,8 @@ deployment:
     repository: ghcr.io/spitikos/api
     pullPolicy: Always
     tag: 06777fa4763b6ddd7dc81da82468f9e09ca0a28d
-  command:
-    - "/bin/sh"
-    - "-c"
-  args:
-    - "source /vault/secrets/config.env && /server"
+  command: ["/bin/sh"]
+  args: ["c", "source /vault/secrets/config.env && /server"]
   podAnnotations:
     vault.hashicorp.com/role: "api"
     vault.hashicorp.com/agent-inject-secret-config.env: "/v1/secret/data/spitikos/api"
