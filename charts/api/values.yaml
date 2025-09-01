@@ -6,15 +6,7 @@ deployment:
     tag: 06777fa4763b6ddd7dc81da82468f9e09ca0a28d
   podAnnotations:
     vault.hashicorp.com/agent-inject: true
-    vault.hashicorp.com/role: "api"
-    vault.hashicorp.com/agent-init-first: true
-    vault.hashicorp.com/agent-inject-secret-config.env: "secret/data/spitikos/api"
-    vault.hashicorp.com/agent-inject-template-config.env: |
-      {{- with secret "secret/data/spitikos/api" -}}
-      {{- range $key, $value := .Data.data }}
-      export {{ $key }}={{ $value }}
-      {{- end }}
-      {{- end }}
+    vault.hashicorp.com/agent-configmap: "vault-secrets"
   env:
     - name: BASH_ENV
       value: /vault/secrets/config.env
@@ -35,7 +27,7 @@ service:
 ingress:
   host: api.spitikos.dev
   annotations:
-    nginx.ingress.kubernetes.io/enable-cors: 'true'
+    nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/cors-allow-origin: http://localhost:3000,https://spitikos.dev
     nginx.ingress.kubernetes.io/cors-allow-methods: GET, POST
     nginx.ingress.kubernetes.io/cors-allow-headers: Content-Type,Connect-Protocol-Version,Connect-Timeout-Ms,Grpc-Timeout,X-Grpc-Web,X-User-Agent
