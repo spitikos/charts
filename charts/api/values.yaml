@@ -5,7 +5,7 @@ deployment:
     pullPolicy: Always
     tag: 06777fa4763b6ddd7dc81da82468f9e09ca0a28d
   podAnnotations:
-    vault.hashicorp.com/agent-inject: true
+    vault.hashicorp.com/agent-inject: "true"
     vault.hashicorp.com/agent-configmap: "vault-secrets"
   env:
     - name: BASH_ENV
