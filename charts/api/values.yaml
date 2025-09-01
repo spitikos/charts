@@ -17,9 +17,6 @@ deployment:
       {{- end }}
   command: ["/bin/sh"]
   args: ["-c", "source /vault/secrets/config.env && /server"]
-  env:
-    - name: BASH_ENV
-      value: /vault/secrets/config.env
   resources:
     requests:
       cpu: 100m
