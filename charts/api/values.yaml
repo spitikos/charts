@@ -7,9 +7,6 @@ deployment:
   podAnnotations:
     vault.hashicorp.com/agent-inject: "true"
     vault.hashicorp.com/agent-configmap: "vault-secrets"
-  env:
-    - name: BASH_ENV
-      value: /vault/secrets/config.env
   resources:
     requests:
       cpu: 100m
