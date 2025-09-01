@@ -15,8 +15,8 @@ deployment:
       export {{ $key }}={{ $value }}
       {{- end }}
       {{- end }}
-  command: ["/bin/sh", "-c"]
-  args: ["/server"]
+  command: ["/bin/sh"]
+  args: ["-c", "source /vault/secrets/config.env && /server"]
   env:
     - name: BASH_ENV
       value: /vault/secrets/config.env
