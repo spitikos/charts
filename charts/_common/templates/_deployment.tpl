@@ -43,6 +43,14 @@ spec:
             - name: {{ .Values.service.portName | default "http" }}
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
+          {{- with .Values.deployment.command }}
+          command:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.deployment.args }}
+          args:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           {{- with .Values.deployment.env }}
           env:
             {{- toYaml . | nindent 12 }}
