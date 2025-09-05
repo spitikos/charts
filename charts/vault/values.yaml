@@ -31,3 +31,5 @@ configJob:
 ingress:
   hosts:
     - vault.taehoonlee.cloud
+  serviceName: vault-ui
+  servicePort: 8200
