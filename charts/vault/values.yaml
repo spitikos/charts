@@ -30,4 +30,4 @@ configJob:
 
 ingress:
   hosts:
-    - host: vault.taehoonlee.cloud
+    - vault.taehoonlee.cloud
