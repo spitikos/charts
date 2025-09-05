@@ -1,4 +1,10 @@
 vault:
+  ui:
+    enabled: true
+
+  injector:
+    enabled: true
+
   server:
     standalone:
       enabled: true
