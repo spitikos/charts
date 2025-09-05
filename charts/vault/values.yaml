@@ -10,7 +10,9 @@ vault:
     enabled: true
 
 ingress:
-  host: vault.spitikos.dev
+  hosts:
+    - vault.spitikos.dev
+    - vault.taehoonlee.cloud
   serviceName: vault-ui
   servicePort: 8200
 

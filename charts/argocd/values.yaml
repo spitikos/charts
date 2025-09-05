@@ -85,7 +85,9 @@ applications:
           - /metadata/annotations
 
 ingress:
-  host: argocd.spitikos.dev
+  hosts:
+    - argocd.spitikos.dev
+    - argocd.taehoonlee.cloud
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
   serviceName: argocd-server

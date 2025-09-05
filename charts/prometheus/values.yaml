@@ -27,6 +27,8 @@ kube-prometheus-stack:
       scrapeInterval: 15s
 
 ingress:
-  host: prometheus.spitikos.dev
+  hosts:
+    - prometheus.spitikos.dev
+    - prometheus.taehoonlee.cloud
   serviceName: prometheus-kube-prometheus-prometheus
   servicePort: 9090

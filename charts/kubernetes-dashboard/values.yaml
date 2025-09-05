@@ -28,7 +28,9 @@ kubernetes-dashboard:
 
 ingress:
   enabled: true
-  host: kube.spitikos.dev
+  hosts:
+    - kube.spitikos.dev
+    - kube.taehoonlee.cloud
   serviceName: kubernetes-dashboard-kong-proxy
   servicePort: 443
   annotations:

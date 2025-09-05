@@ -15,21 +15,26 @@ spec:
   ingressClassName: {{ .Values.ingress.className | default "nginx" }}
   tls:
   - hosts:
-    - {{ .Values.ingress.host }}
+    {{- range .Values.ingress.hosts }}
+    - {{ . | quote }}
+    {{- end }}
+    secretName: {{ printf "%s-tls" (include "common.fullname" .) }}
   rules:
-  - host: {{ .Values.ingress.host }}
+  {{- range .Values.ingress.hosts }}
+  - host: {{ . | quote }}
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: {{ .Values.ingress.serviceName | default (include "common.fullname" .) }}
+            name: {{ $.Values.ingress.serviceName | default (include "common.fullname" $) }}
             port:
-              {{- if .Values.ingress.servicePort }}
-              number: {{ .Values.ingress.servicePort }}
+              {{- if $.Values.ingress.servicePort }}
+              number: {{ $.Values.ingress.servicePort }}
               {{- else }}
-              number: {{ .Values.service.port }}
+              number: {{ $.Values.service.port }}
               {{- end }}
+  {{- end }}
 {{- end -}}
 {{- end -}}

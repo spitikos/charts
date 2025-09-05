@@ -17,7 +17,9 @@ service:
   targetPort: 3000
   portName: http
 ingress:
-  host: spitikos.dev
+  hosts:
+    - spitikos.dev
+    - taehoonlee.cloud
 scaledobject:
   minReplicas: 1
   maxReplicas: 3
