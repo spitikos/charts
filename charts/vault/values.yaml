@@ -20,7 +20,7 @@ vault:
 
     serviceAccount:
       create: true
-      name: "vault"
+      name: vault-auth
 
     authDelegator:
       enabled: true
