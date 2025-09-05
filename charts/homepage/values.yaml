@@ -19,6 +19,7 @@ service:
 ingress:
   hosts:
     - taehoonlee.cloud
+    - spitikos.dev
 scaledobject:
   minReplicas: 1
   maxReplicas: 3
