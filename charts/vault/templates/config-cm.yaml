@@ -16,7 +16,7 @@ data:
     set -e
 
     echo "Waiting for Vault to become active..."
-    until vault status -address="http://{{ include "common.fullname" . }}:8200" | grep -q "Sealed.*false"; do
+    until vault status | grep -q "Sealed.*false"; do
       sleep 2
     done
     echo "Vault is unsealed and active."
