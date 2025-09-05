@@ -2,10 +2,10 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "vault.fullname" . }}-config-hook
+  name: {{ include "common.fullname" . }}-config-hook
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "vault.labels" . | nindent 4 }}
+    {{- include "common.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": post-install,post-upgrade
     "helm.sh/hook-weight": "5"
@@ -13,11 +13,11 @@ metadata:
 spec:
   template:
     metadata:
-      name: {{ include "vault.fullname" . }}-config-hook
+      name: {{ include "common.fullname" . }}-config-hook
       labels:
-        {{- include "vault.labels" . | nindent 8 }}
+        {{- include "common.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ include "vault.fullname" . }}-config-hook
+      serviceAccountName: {{ include "common.fullname" . }}-config-hook
       restartPolicy: OnFailure
       containers:
         - name: config
@@ -29,6 +29,6 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: {{ include "vault.fullname" . }}-config-hook
+            name: {{ include "common.fullname" . }}-config-hook
             defaultMode: 0777
 {{- end }}

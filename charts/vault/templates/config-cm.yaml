@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "vault.fullname" . }}-config-hook
+  name: {{ include "common.fullname" . }}-config-hook
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "vault.labels" . | nindent 4 }}
+    {{- include "common.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": post-install,post-upgrade
     "helm.sh/hook-weight": "-5"
@@ -16,13 +16,13 @@ data:
     set -e
 
     echo "Waiting for Vault to become active..."
-    until vault status -address="http://{{ include "vault.fullname" . }}:8200" | grep -q "Sealed.*false"; do
+    until vault status -address="http://{{ include "common.fullname" . }}:8200" | grep -q "Sealed.*false"; do
       sleep 2
     done
     echo "Vault is unsealed and active."
 
     # Login with the root token
-    vault login -address="http://{{ include "vault.fullname" . }}:8200" root
+    vault login -address="http://{{ include "common.fullname" . }}:8200" root
 
     # 1. Enable Kubernetes Auth Method if not already enabled
     echo "Enabling Kubernetes auth method..."
