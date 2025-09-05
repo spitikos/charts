@@ -32,7 +32,7 @@ vault:
       enabled: true
 
 configJob:
-  enabled: true
+  enabled: false
 
 ingress:
   hosts:
