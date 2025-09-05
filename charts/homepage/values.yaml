@@ -3,7 +3,7 @@ deployment:
   image:
     repository: ghcr.io/spitikos/homepage
     pullPolicy: Always
-    tag: 4e63fb2bb90389e97e93974ad491b08ef1a1c15f
+    tag: 0a28f6094b8e4a53f947bc969ce1508d783c66e3
   resources:
     requests:
       cpu: 100m
