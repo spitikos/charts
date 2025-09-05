@@ -28,7 +28,6 @@ kube-prometheus-stack:
 
 ingress:
   hosts:
-    - prometheus.spitikos.dev
     - prometheus.taehoonlee.cloud
   serviceName: prometheus-kube-prometheus-prometheus
   servicePort: 9090

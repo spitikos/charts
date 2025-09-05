@@ -33,7 +33,6 @@ service:
   portName: grpc
 ingress:
   hosts:
-    - api.spitikos.dev
     - api.taehoonlee.cloud
   annotations:
     nginx.ingress.kubernetes.io/enable-cors: 'true'

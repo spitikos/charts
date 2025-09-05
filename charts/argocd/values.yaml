@@ -86,7 +86,6 @@ applications:
 
 ingress:
   hosts:
-    - argocd.spitikos.dev
     - argocd.taehoonlee.cloud
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
