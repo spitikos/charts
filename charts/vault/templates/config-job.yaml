@@ -23,6 +23,12 @@ spec:
         - name: config
           image: "hashicorp/vault:1.20.1"
           command: ["/bin/sh", "/config/configure.sh"]
+          env:
+            - name: VAULT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: vault-root-token
+                  key: token
           volumeMounts:
             - name: config
               mountPath: /config

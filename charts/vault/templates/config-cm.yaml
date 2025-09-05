@@ -21,9 +21,6 @@ data:
     done
     echo "Vault is unsealed and active."
 
-    # Login with the root token
-    vault login -address="http://{{ include "common.fullname" . }}:8200" root
-
     # 1. Enable Kubernetes Auth Method if not already enabled
     echo "Enabling Kubernetes auth method..."
     vault auth list | grep -q "kubernetes/" || vault auth enable kubernetes
