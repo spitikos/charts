@@ -1,41 +1,7 @@
-vault:
-  ui:
-    enabled: true
-
-  injector:
-    enabled: true
-
-  server:
-    standalone:
-      enabled: true
-      config: |
-        ui = true
-        listener "tcp" {
-          tls_disable = 1
-          address = "[::]:8200"
-          cluster_address = "[::]:8201"
-        }
-        storage "file" {
-          path = "/vault/data"
-        }
-
-    dataStorage:
-      enabled: true
-      size: 1Gi
-      storageClass: "local-path"
-
-    serviceAccount:
-      create: true
-      name: vault-auth
-
-    authDelegator:
-      enabled: true
-
-configJob:
-  enabled: false
+grafana:
 
 ingress:
   hosts:
-    - vault.taehoonlee.cloud
-  serviceName: vault-ui
-  servicePort: 8200
+    - grafana.taehoonlee.cloud
+  serviceName: grafana-ui
+  servicePort: 8000
