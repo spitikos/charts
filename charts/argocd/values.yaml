@@ -83,13 +83,6 @@ applications:
           - /spec
           - /metadata/annotations
 
-  # - name: grafana
-  #   namespace: grafana
-  #   path: charts/grafana
-  #   releaseName: grafana
-  #   syncOptions:
-  #     - CreateNamespace=true
-
 ingress:
   hosts:
     - argocd.taehoonlee.cloud
