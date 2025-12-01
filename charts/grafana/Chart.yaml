@@ -1,0 +1,17 @@
+apiVersion: v2
+name: grafana-wrapper
+description: A wrapper Helm chart for the Grafana chart.
+type: application
+version: 10.2.0
+appVersion: 12.3.0
+icon: "https://raw.githubusercontent.com/spitikos/.github/main/assets/icon.svg"
+annotations:
+  charts.helm.sh/display-name: "Grafana"
+
+dependencies:
+  - name: grafana
+    version: 10.2.0
+    repository: "https://grafana.github.io/helm-charts"
+  - name: common
+    version: "0.1.0"
+    repository: "file://../_common"
