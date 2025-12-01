@@ -1,6 +1,12 @@
 kube-prometheus-stack:
   grafana:
     enabled: true
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      hosts:
+        - grafana.taehoonlee.cloud
+
   alertmanager:
     enabled: false
   prometheusOperator:
