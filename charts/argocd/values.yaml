@@ -69,10 +69,10 @@ applications:
     syncOptions:
       - CreateNamespace=true
 
-  - name: prometheus
-    namespace: prometheus
-    path: charts/prometheus
-    releaseName: prometheus
+  - name: kube-prometheus-stack
+    namespace: monitoring
+    path: charts/kube-prometheus-stack
+    releaseName: kube-prometheus-stack
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true

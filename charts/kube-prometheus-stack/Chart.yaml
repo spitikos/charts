@@ -1,12 +1,12 @@
 apiVersion: v2
-name: prometheus-wrapper
+name: kube-prometheus-stack-wrapper
 description: A wrapper Helm chart for the kube-prometheus-stack chart.
 type: application
 version: 0.1.0
 appVersion: v0.83.0
 icon: "https://raw.githubusercontent.com/spitikos/.github/main/assets/icon.svg"
 annotations:
-  charts.helm.sh/display-name: Prometheus
+  charts.helm.sh/display-name: Kube Prometheus Stack
 
 dependencies:
   - name: kube-prometheus-stack
