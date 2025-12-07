@@ -3,7 +3,7 @@ deployment:
   image:
     repository: ghcr.io/spitikos/api
     pullPolicy: Always
-    tag: 91b46e6c63bf0c6ee9d1b96ecd86b450f843e785
+    tag: a5b5fe38a7f62f6ec0fca0776da90a7d8d6ac39c
   podAnnotations:
     vault.hashicorp.com/agent-inject: "true"
     vault.hashicorp.com/role: "api"
