@@ -43,7 +43,7 @@ ingress:
     nginx.ingress.kubernetes.io/backend-protocol: GRPC
 scaledobject:
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 3
   prometheus:
     query: 'sum(rate(nginx_ingress_controller_requests{exported_service="api"}[2m]))'
     threshold: 1
