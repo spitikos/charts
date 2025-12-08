@@ -21,7 +21,7 @@ spec:
   triggers:
   - type: prometheus
     metadata:
-      serverAddress: http://prometheus-kube-prometheus-prometheus.prometheus.svc.cluster.local:9090
+      serverAddress: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
       query: {{ .Values.scaledobject.prometheus.query | quote }}
       threshold: {{ .Values.scaledobject.prometheus.threshold | quote }}
 {{- end -}}
