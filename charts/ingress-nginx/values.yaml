@@ -11,10 +11,10 @@ ingress-nginx:
       enabled: true
       serviceMonitor:
         enabled: true
-        namespace: prometheus
+        namespace: monitoring
         scrapeInterval: 15s
         additionalLabels:
-          release: prometheus
+          release: monitoring
     hostPort:
       enabled: false
     logLevel: "DEBUG"

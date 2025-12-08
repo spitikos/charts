@@ -21,4 +21,4 @@ keda:
       enabled: true
       serviceMonitor:
         enabled: true
-        namespace: prometheus
+        namespace: monitoring
